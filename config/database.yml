@@ -17,10 +17,10 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: <%= ENV['BACKEND_DATABASE_HOST']     { localhost } %>
-  username: <%= ENV['BACKEND_DATABASE_USER']     { postgres } %>
-  password: <%= ENV['BACKEND_DATABASE_PASSWORD']  %>
-  port: <%= ENV['BACKEND_DATABASE_POR']     { 5432 } %>
+  host: <%= ENV['BACKEND_DATABASE_HOST']   || 'localhost' %>
+  username: <%= ENV['BACKEND_DATABASE_USER']    || 'postgres' %>
+  password: <%= ENV['BACKEND_DATABASE_PASSWORD'] || 'code_challenge' %>
+  port: <%= ENV['BACKEND_DATABASE_PORT']   || 5434 %>
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>

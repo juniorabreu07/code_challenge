@@ -2,10 +2,11 @@ version: "3"
 
 services:
   db:
-    image: postgres:11.5
+    image: postgres:latest
+    container_name: postgres-container
     restart: unless-stopped
     ports:
-      - "5432:5432"
+      - 5434:5432/tcp
     environment:
       POSTGRES_DB: code_challenge_development
       # POSTGRES_USER: postgres
