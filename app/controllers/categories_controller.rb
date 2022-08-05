@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
 
-    if @category.save
+    if param_valid? && @category.save
       render json: @category, status: :created, location: @category
     else
       render json: @category.errors, status: :unprocessable_entity
@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
 
   # PATCH/PUT /categories/1
   def update
-    if @category.update(category_params)
+    if param_valid? && @category.update(category_params)
       render json: @category
     else
       render json: @category.errors, status: :unprocessable_entity
@@ -39,6 +39,9 @@ class CategoriesController < ApplicationController
   end
 
   private
+    def param_valid?
+      ( ! category_params.empty? && @category.valid?)
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])
