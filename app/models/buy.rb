@@ -67,7 +67,7 @@ class Buy < ApplicationRecord
     # 1. Legibilidad de código
     # 2. Performance:
     #   2.1 Ausencia de índices
-    #   2.2 Joins innecesarios
+    #   2.2 Joins innecesarios: Las compras al ser info transaccional lo mejor es registrar product_id y product_name por cada compra para evitar joins.
     # 3. Me faltó ver implementación de paginación.
     #
     # Son cosas de fácil adopción creo yo, buen trabajo.
