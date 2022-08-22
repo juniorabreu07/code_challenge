@@ -4,6 +4,9 @@ class Product < ApplicationRecord
   validates :name, :price, :category_id, presence: true
 
   def self.most_selled_products
+    # CP: El objetivo era los productos más comprados no los productos que más han recaudado dinero
+    #     Aun así es una buena propuesta de código para los productos que más recaudan dinero por categoría.
+    #     Viendo el código sin ejecutarlo, creo que cumple.
     ActiveRecord::Base.connection.exec_query("
       select * from categories c
       join lateral (
